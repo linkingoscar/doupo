@@ -219,6 +219,17 @@ doupo/
 
 直接用浏览器打开 `site/index.html`，无需服务器。
 
+### Netlify 部署
+
+仓库根目录已包含 `netlify.toml`：
+
+```toml
+[build]
+  publish = "site"
+```
+
+Netlify 后台保持 Base directory 为仓库根目录即可，不需要 Build command；发布目录由 `netlify.toml` 固定为 `site`。
+
 ### 本地开发
 
 如需热重载，可用任意静态服务器：
