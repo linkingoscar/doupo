@@ -1,0 +1,864 @@
+﻿/* ============================
+   鏂楃牬鑻嶇┕涓栫晫瑙傜櫨绉?- 鍝嶅簲寮?& 鍔ㄧ敾
+   濯掍綋鏌ヨ / 婊氬姩鍏ュ満 / 鎶樺彔闈㈡澘
+   ============================ */
+
+        /* --- 5. 绉诲姩绔畬鏁村搷搴斿紡 --- */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 0.6rem 1rem;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .nav-container {
+                display: none;
+                flex-direction: column;
+                gap: 0.3rem;
+                padding-top: 0.5rem;
+            }
+
+            .nav-container.open {
+                display: flex;
+            }
+
+            .nav a {
+                font-size: 0.85rem;
+                padding: 0.5rem 0.8rem;
+                border-bottom: 1px solid rgba(242, 204, 92, 0.08);
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 8vw, 3rem);
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+                letter-spacing: 0.2em;
+            }
+
+            .hero .desc {
+                font-size: 0.85rem;
+                padding: 0.8rem 1.2rem;
+            }
+
+            .container {
+                padding: 1.5rem 1rem;
+            }
+
+            .catalog-section,
+            .section {
+                padding: 1.5rem 1rem;
+            }
+
+            .catalog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .two-column,
+            .calc-container {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid,
+            .archive-card-grid,
+            .flame-grid,
+            .character-grid,
+            .puppet-grid,
+            .pill-grid,
+            .jade-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .flame-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-container {
+                overflow-x: auto;
+            }
+
+            #backToTop {
+                right: 1rem;
+                bottom: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+
+            .modal-box {
+                max-height: 90vh;
+                border-radius: 8px;
+            }
+
+            .modal-body {
+                padding: 1rem;
+            }
+
+            .modal-title {
+                font-size: 1.2rem;
+            }
+
+            .clan-modal-container {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero .subtitle {
+                font-size: 0.9rem;
+                letter-spacing: 0.1em;
+            }
+
+            .catalog-item span {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .section {
+                padding: 1.2rem 0.8rem;
+            }
+
+            .calc-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ============================================
+           鍙鍖栫粍浠讹細淇℃伅鍗＄墖 / 鎴樺焦鍗?/ 鏃堕棿绾块樁娈?/ 绉樺鍗?/ 鎴愰暱闃舵
+           ============================================ */
+
+        /* --- 淇℃伅鍗＄墖锛堝湴鐐?鍔垮姏/浜虹墿锛?--- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .info-card {
+            background: linear-gradient(160deg, rgba(26, 17, 32, 0.85) 0%, rgba(10, 6, 12, 0.95) 100%);
+            border: 1px solid rgba(242, 204, 92, 0.15);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--color-gold-dark), var(--color-gold));
+            border-radius: 10px 0 0 10px;
+        }
+
+        .info-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(242, 204, 92, 0.4);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(242, 204, 92, 0.1);
+        }
+
+        .info-card-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.3rem;
+            color: var(--color-gold-light);
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px dashed rgba(242, 204, 92, 0.2);
+            letter-spacing: 0.05em;
+        }
+
+        .info-card-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .meta-tag {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(242, 204, 92, 0.2);
+            color: var(--color-text-light);
+            background: rgba(242, 204, 92, 0.05);
+        }
+
+        .meta-tag.type {
+            border-color: rgba(114, 9, 183, 0.4);
+            color: var(--color-purple-light);
+            background: rgba(114, 9, 183, 0.1);
+        }
+
+        .meta-tag.risk {
+            border-color: rgba(217, 4, 41, 0.4);
+            color: var(--color-red-light);
+            background: rgba(217, 4, 41, 0.1);
+        }
+
+        .meta-tag.location {
+            border-color: rgba(0, 245, 212, 0.3);
+            color: var(--color-cyan);
+            background: rgba(0, 245, 212, 0.05);
+        }
+
+        .info-card-body {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--color-text-light);
+        }
+
+        .info-card-body p {
+            margin-bottom: 0.4rem;
+        }
+
+        .info-card-body strong {
+            color: var(--color-gold);
+        }
+
+        .info-card-body ul {
+            margin: 0.5rem 0;
+            padding-left: 1.2rem;
+        }
+
+        .info-card-body li {
+            margin: 0.3rem 0;
+            font-size: 0.85rem;
+        }
+
+        /* --- 鎴樺焦鍗＄墖 --- */
+        .battle-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .battle-card {
+            background: linear-gradient(135deg, rgba(30, 10, 15, 0.9) 0%, rgba(10, 6, 12, 0.95) 100%);
+            border: 1px solid rgba(217, 4, 41, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .battle-card:hover {
+            border-color: rgba(217, 4, 41, 0.5);
+            box-shadow: 0 8px 30px rgba(217, 4, 41, 0.15);
+        }
+
+        .battle-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(217, 4, 41, 0.08);
+            border-bottom: 1px solid rgba(217, 4, 41, 0.15);
+        }
+
+        .battle-number {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.8rem;
+            color: var(--color-red-light);
+            font-weight: 900;
+            min-width: 3rem;
+            text-align: center;
+            text-shadow: 0 0 15px rgba(217, 4, 41, 0.5);
+        }
+
+        .battle-title {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.2rem;
+            color: var(--color-gold-light);
+            letter-spacing: 0.05em;
+        }
+
+        .battle-body {
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .battle-side {
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            border: 1px solid rgba(242, 204, 92, 0.08);
+        }
+
+        .battle-side h5 {
+            color: var(--color-gold);
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 1px solid rgba(242, 204, 92, 0.1);
+        }
+
+        .battle-side p, .battle-side li {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        .battle-outcome {
+            grid-column: 1 / -1;
+            padding: 1rem;
+            background: rgba(242, 204, 92, 0.05);
+            border-left: 3px solid var(--color-gold);
+            border-radius: 0 6px 6px 0;
+        }
+
+        .battle-outcome h5 {
+            color: var(--color-gold);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .battle-outcome p {
+            font-size: 0.85rem;
+            color: var(--color-text-light);
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .battle-body {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* --- 鏃堕棿绾块樁娈靛崱鐗?--- */
+        .stage-list {
+            position: relative;
+            margin: 2rem 0;
+            padding-left: 2rem;
+        }
+
+        .stage-list::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--color-gold-dark), var(--color-red), var(--color-purple));
+            border-radius: 2px;
+        }
+
+        .stage-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(26, 17, 32, 0.8) 0%, rgba(10, 6, 12, 0.9) 100%);
+            border: 1px solid rgba(242, 204, 92, 0.12);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .stage-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 1.8rem;
+            width: 14px;
+            height: 14px;
+            background: var(--color-gold);
+            border: 3px solid var(--bg-main);
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(242, 204, 92, 0.5);
+        }
+
+        .stage-item:hover {
+            transform: translateX(5px);
+            border-color: rgba(242, 204, 92, 0.3);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .stage-label {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.2rem;
+            color: var(--color-gold-light);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        .stage-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .stage-content {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: var(--color-text-light);
+        }
+
+        .stage-content p {
+            margin-bottom: 0.3rem;
+        }
+
+        .stage-content strong {
+            color: var(--color-gold);
+        }
+
+        .stage-content ul {
+            margin: 0.4rem 0;
+            padding-left: 1.2rem;
+        }
+
+        .stage-content li {
+            margin: 0.2rem 0;
+            font-size: 0.85rem;
+        }
+
+        /* --- 鎴愰暱杩涘害鏉?--- */
+        .growth-bar {
+            margin: 1.5rem 0;
+        }
+
+        .growth-bar-track {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+
+        .growth-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold), var(--color-flame-orange));
+            box-shadow: 0 0 10px rgba(242, 204, 92, 0.4);
+            transition: width 1s ease;
+        }
+
+        .growth-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--color-text-light);
+        }
+
+        /* --- 閿€艰 --- */
+        .kv-row {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .kv-key {
+            color: var(--color-gold);
+            font-weight: 600;
+            min-width: max-content;
+            white-space: nowrap;
+        }
+
+        .kv-val {
+            color: var(--color-text-light);
+        }
+
+        /* --- 鍒嗛殧鏍囬 --- */
+        .divider-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 2.5rem 0 1.5rem;
+        }
+
+        .divider-title::before,
+        .divider-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(242, 204, 92, 0.3), transparent);
+        }
+
+        .divider-title h3 {
+            font-family: 'Ma Shan Zheng', cursive;
+            font-size: 1.4rem;
+            color: var(--color-gold-light);
+            white-space: nowrap;
+            letter-spacing: 0.1em;
+            text-shadow: 0 0 10px rgba(242, 204, 92, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stage-list {
+                padding-left: 1.5rem;
+            }
+
+            .stage-item::before {
+                left: -1.85rem;
+            }
+        }
+/* === 鍏ㄥ眬寰界珷绯荤粺 (Badges) === */
+.badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255,255,255,0.1);
+    vertical-align: middle;
+    margin-right: 0.4rem;
+    margin-bottom: 0.4rem;
+}
+.badge-tian {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: #fff;
+    border-color: rgba(231, 76, 60, 0.5);
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.4);
+}
+.badge-di {
+    background: linear-gradient(135deg, #f39c12 0%, #d35400 100%);
+    color: #fff;
+    border-color: rgba(243, 156, 18, 0.5);
+    box-shadow: 0 0 10px rgba(243, 156, 18, 0.3);
+}
+.badge-xuan {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: #fff;
+    border-color: rgba(46, 204, 113, 0.5);
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+}
+.badge-huang {
+    background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
+    color: #fff;
+    border-color: rgba(149, 165, 166, 0.5);
+}
+.badge-special {
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: #fff;
+    border-color: rgba(155, 89, 182, 0.5);
+    box-shadow: 0 0 10px rgba(155, 89, 182, 0.4);
+}
+.badge-type {
+    background: rgba(255,255,255,0.1);
+    color: #ccc;
+    border-color: rgba(255,255,255,0.2);
+    font-weight: normal;
+}
+
+/* === 浜虹墿妗ｆ鍗＄墖锛堟繁搴︾増锛?=== */
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+}
+
+.profile-card {
+    background: linear-gradient(160deg, rgba(26, 17, 32, 0.85) 0%, rgba(10, 6, 12, 0.95) 100%);
+    border: 1px solid rgba(242, 204, 92, 0.15);
+    border-radius: 10px;
+    padding: 1.2rem 1.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-gold-dark), var(--color-gold), var(--color-gold-dark));
+}
+
+.profile-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(242, 204, 92, 0.4);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 12px rgba(242, 204, 92, 0.1);
+}
+
+.profile-name {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.3rem;
+    color: var(--color-gold-light);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.05em;
+}
+
+.profile-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    background: rgba(217, 4, 41, 0.2);
+    color: var(--color-red-light);
+    border: 1px solid rgba(217, 4, 41, 0.3);
+    margin-bottom: 0.6rem;
+}
+
+.profile-fields {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-text-light);
+}
+
+.profile-fields .kv-row {
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.profile-fields .kv-key {
+    font-size: 0.8rem;
+}
+
+/* === 绱у噾闃舵鍗＄墖锛堟垚闀胯矾绾夸笓鐢級 === */
+.growth-stage {
+    background: linear-gradient(160deg, rgba(26, 17, 32, 0.8) 0%, rgba(10, 6, 12, 0.92) 100%);
+    border: 1px solid rgba(242, 204, 92, 0.12);
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.growth-stage:hover {
+    border-color: rgba(242, 204, 92, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.growth-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    background: rgba(242, 204, 92, 0.05);
+    border-bottom: 1px solid rgba(242, 204, 92, 0.1);
+    cursor: pointer;
+}
+
+.growth-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.growth-num {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    font-weight: 900;
+    min-width: 2rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(242, 204, 92, 0.4);
+}
+
+.growth-title {
+    font-family: 'Ma Shan Zheng', cursive;
+    font-size: 1.1rem;
+    color: var(--color-gold-light);
+    letter-spacing: 0.05em;
+}
+
+.growth-realm {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    background: rgba(217, 4, 41, 0.15);
+    color: var(--color-red-light);
+    border: 1px solid rgba(217, 4, 41, 0.25);
+    white-space: nowrap;
+}
+
+.growth-body {
+    padding: 1.2rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.8rem;
+}
+
+.growth-stat {
+    padding: 0.6rem 0.8rem;
+    background: rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    border-left: 3px solid var(--color-gold-dark);
+}
+
+.growth-stat-label {
+    font-size: 0.7rem;
+    color: var(--color-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+}
+
+.growth-stat-value {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.5;
+}
+
+.growth-summary {
+    grid-column: 1 / -1;
+    padding: 0.8rem;
+    background: rgba(242, 204, 92, 0.04);
+    border-radius: 6px;
+    border: 1px dashed rgba(242, 204, 92, 0.15);
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.growth-summary strong {
+    color: var(--color-gold);
+}
+
+@media (max-width: 768px) {
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+    .growth-body {
+        grid-template-columns: 1fr;
+    }
+    .growth-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}
+
+/* 错开入场延迟 */
+/* 首屏 Hero 和导航不加动画 */
+.hero, .nav, .nav-container, .nav-toggle, .scroll-down,
+#fireCanvas, #backToTop, .footer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::before {
+    content: '鈻?;
+    font-size: 0.9rem;
+    color: var(--color-gold);
+    transition: transform 0.3s ease;
+}
+
+details[open] > summary::before {
+    transform: rotate(90deg);
+}
+
+summary:hover {
+    background: rgba(242, 204, 92, 0.08);
+    color: var(--color-gold);
+}
+
+details[open] > summary {
+    border-bottom-color: rgba(242, 204, 92, 0.1);
+    background: rgba(242, 204, 92, 0.06);
+}
+
+details > div,
+details > p,
+details > ul,
+details > ol {
+    padding: 1rem 1.5rem;
+}
+
+/* === 绉诲姩绔€傞厤 === */
+@media (max-width: 768px) {
+
+    summary {
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+    }
+}
+
+/* === 滚动入场动画 === */
+/* JS 就绪前：内容可见。JS 就绪后 body.scroll-ready 触发隐藏+动画 */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(16px);
+}
+
+body.scroll-ready .scroll-reveal {
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+body.scroll-ready .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+body.scroll-ready .scroll-reveal:nth-child(2) { transition-delay: 0.04s; }
+body.scroll-ready .scroll-reveal:nth-child(3) { transition-delay: 0.08s; }
+body.scroll-ready .scroll-reveal:nth-child(4) { transition-delay: 0.12s; }
+body.scroll-ready .scroll-reveal:nth-child(5) { transition-delay: 0.16s; }
+
+/* 首屏元素不加动画 */
+.hero, .nav, .nav-container, .nav-toggle, .scroll-down,
+#fireCanvas, #backToTop, .footer {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* === 页面加载淡入 === */
+@keyframes pageIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.container {
+    animation: pageIn 0.5s ease-out both;
+}
+
+/* === 导航简洁分隔线 === */
+.nav-sep {
+    width: 1px;
+    height: 1.2rem;
+    background: rgba(242, 204, 92, 0.12);
+    align-self: center;
+    margin: 0 0.2rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .nav-sep {
+        display: none;
+    }
+
+    .scroll-reveal {
+        transform: translateY(16px);
+    }
+}

@@ -1,0 +1,91 @@
+/* ============================
+   斗破苍穹世界观百科 - 基础层
+   变量 / 重置 / 全局 / 排版工具
+   ============================ */
+
+        /* 全局变量与基础重置 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-main: #0a060c;
+            --bg-card: rgba(22, 14, 28, 0.65);
+            --color-gold: #f2cc5c;
+            --color-gold-light: #fff2b2;
+            --color-gold-dark: #b8860b;
+            --color-red: #d90429;
+            --color-red-light: #ef233c;
+            --color-red-dark: #8a0319;
+            --color-flame-orange: #ff5400;
+            --color-flame-deep: #cc2900;
+            --color-purple: #7209b7;
+            --color-purple-light: #9d4edd;
+            --color-cyan: #00f5d4;
+            --color-text: #eadecd;
+            --color-text-light: #b0a596;
+            --border-radius: 6px;
+            --transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            --glow-gold: 0 0 15px rgba(242, 204, 92, 0.5), 0 0 30px rgba(184, 134, 11, 0.3);
+            --glow-fire: 0 0 20px rgba(255, 84, 0, 0.6), 0 0 40px rgba(217, 4, 41, 0.3);
+        }
+
+        /* 滚动条美化 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-main);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, var(--color-red-dark), var(--color-flame-orange), var(--color-gold-dark));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, var(--color-red), var(--color-gold), var(--color-gold-light));
+        }
+
+        /* 全局基础设置 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Noto Serif SC", "Microsoft YaHei", "思源宋体", serif;
+            background: var(--bg-main);
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(217, 4, 41, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(114, 9, 183, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 50% 80%, rgba(242, 204, 92, 0.03) 0%, transparent 60%);
+            background-attachment: fixed;
+            color: var(--color-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 背景流云/斗气特效纹理 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.02'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+

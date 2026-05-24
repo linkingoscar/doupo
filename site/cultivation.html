@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>斗气修为 - 斗破苍穹世界观</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="nav">
+        <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+        <div class="nav-container">
+            <a href="index.html">首页</a>
+            <a href="cultivation.html" class="active">斗气修为</a>
+            <a href="skills.html">功法斗技</a>
+            <a href="alchemy.html">炼药师丹药</a>
+            <a href="soul.html">灵魂力量</a>
+            <a href="fire.html">异火榜</a>
+            <a href="beast.html">血脉与魔兽</a>
+            <span class="nav-sep"></span>
+            <a href="clans.html">远古八族</a>
+            <a href="geography.html">地理格局</a>
+            <a href="forces.html">势力体系</a>
+            <a href="realm.html">秘境空间</a>
+            <a href="canaan.html">迦南学院</a>
+            <a href="hundian.html">魂殿全解</a>
+            <a href="ancient.html">古帝洞府</a>
+            <span class="nav-sep"></span>
+            <a href="timeline.html">剧情时间线</a>
+            <a href="xiaoyan.html">萧炎成长</a>
+            <a href="battle.html">战役复盘</a>
+            <a href="story.html">人物图鉴</a>
+            <a href="calculator.html">战力计算</a>
+        </div>
+    </div>
+    <div class="container">
+        <!-- 1. 斗气修为体系 -->
+        <section class="section" id="斗气修为">
+            <h2 class="section-title">01 核心主线：斗气修为境界体系</h2>
+            <p class="section-desc">全书最基础、最核心的等级体系，所有其他体系均与其强绑定。除特殊标注外，每个大境界均分为<span
+                    class="highlight">一至九星</span>，每星再细分为「初期、中期、后期、巅峰」四个小层次。</p>
+
+            <!-- 境界横轴总览 -->
+            <div class="timeline-container">
+                <div class="timeline-track">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-node active" data-glow="gold" onclick="switchRealm('realm-1', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗之气</div>
+                    </div>
+                    <div class="timeline-node" data-glow="gold" onclick="switchRealm('realm-2', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗者</div>
+                    </div>
+                    <div class="timeline-node" data-glow="gold" onclick="switchRealm('realm-3', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗师</div>
+                    </div>
+                    <div class="timeline-node" data-glow="gold" onclick="switchRealm('realm-4', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">大斗师</div>
+                    </div>
+                    <div class="timeline-node" data-glow="gold" onclick="switchRealm('realm-5', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗灵</div>
+                    </div>
+                    <div class="timeline-node" data-glow="gold" onclick="switchRealm('realm-6', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗王</div>
+                    </div>
+                    <div class="timeline-node" data-glow="gold" onclick="switchRealm('realm-7', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗皇</div>
+                    </div>
+                    <div class="timeline-node" data-glow="red" onclick="switchRealm('realm-8', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗宗</div>
+                    </div>
+                    <div class="timeline-node" data-glow="red" onclick="switchRealm('realm-9', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗尊</div>
+                    </div>
+                    <div class="timeline-node" data-glow="purple" onclick="switchRealm('realm-10', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">半圣</div>
+                    </div>
+                    <div class="timeline-node" data-glow="purple" onclick="switchRealm('realm-11', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗圣</div>
+                    </div>
+                    <div class="timeline-node" data-glow="purple" onclick="switchRealm('realm-12', this)">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-label">斗帝</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 斗之气 -->
+            <div class="realm-card active" id="realm-1">
+                <div class="realm-left">
+                    <div class="realm-title">斗之气</div>
+                    <div class="realm-feature">能力特征：滋润筋骨，强壮身体</div>
+                    <div class="realm-desc">最基础的阶段，吸收微弱能量强化肉身。十段圆满方可凝聚斗之气旋，突破至斗者。</div>
+                    <div class="realm-stages-label">细分阶段：一至九段/十段临界</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">平民/孩童阶层。在大家族中，若成年未凝聚气旋会被视为废柴下放至边缘产业。</div>
+                </div>
+            </div>
+
+            <!-- 斗者 -->
+            <div class="realm-card" id="realm-2">
+                <div class="realm-left">
+                    <div class="realm-title">斗者</div>
+                    <div class="realm-feature">内视气旋，斗气外放</div>
+                    <div class="realm-desc">正式踏入修炼之路，可内视丹田气旋，实现斗气外放，可修炼黄阶功法斗技。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">修炼者的起点。对应一品炼药师、一阶魔兽。具备成为雇佣兵或家族底层护卫的资格。</div>
+                </div>
+            </div>
+
+            <!-- 斗师 -->
+            <div class="realm-card" id="realm-3">
+                <div class="realm-left">
+                    <div class="realm-title">斗师</div>
+                    <div class="realm-feature">液态斗气，斗气纱衣</div>
+                    <div class="realm-desc">斗气液态化，可凝聚斗气纱衣大幅提升防御力，斗气续航能力显著增强。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">骨干中坚。对应二品炼药师、二阶魔兽。在小城市或佣兵团中可担任小队长级别职务。</div>
+                </div>
+            </div>
+
+            <!-- 大斗师 -->
+            <div class="realm-card" id="realm-4">
+                <div class="realm-left">
+                    <div class="realm-title">大斗师</div>
+                    <div class="realm-feature">固态斗气，斗气铠甲</div>
+                    <div class="realm-desc">斗气结晶固态化，可凝聚斗气铠甲，防御大增，斗气可离体大范围外放攻击。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">高手层级。对应三品炼药师、三阶魔兽。在普通城市中属顶尖战力，足以建立小型家族势力。</div>
+                </div>
+            </div>
+
+            <!-- 斗灵 -->
+            <div class="realm-card" id="realm-5">
+                <div class="realm-left">
+                    <div class="realm-title">斗灵</div>
+                    <div class="realm-feature">斗气凝物，随心所欲</div>
+                    <div class="realm-desc">实现斗气凝物化实，可将斗气化为任意形态的武器或厚重屏障，对斗气的掌控力入微。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">强者分水岭。对应四品炼药师、四阶魔兽。能在帝国军中担任统领，或在大家族中担任长老。</div>
+                </div>
+            </div>
+
+            <!-- 斗王 -->
+            <div class="realm-card glow-gold" id="realm-6">
+                <div class="realm-left">
+                    <div class="realm-title">斗王</div>
+                    <div class="realm-feature">斗气化翼，调动外界能量</div>
+                    <div class="realm-desc">核心能力<span class="highlight">斗气化翼</span>，可脱离地面长时间腾空飞行，且能初步调动同属性的天地能量辅佐攻击。
+                    </div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right border-gold">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">一方强者。对应五品炼药师、五阶魔兽。具备开宗立派的资格，可跻身加玛帝国十大强者之列。</div>
+                </div>
+            </div>
+
+            <!-- 斗皇 -->
+            <div class="realm-card glow-gold" id="realm-7">
+                <div class="realm-left">
+                    <div class="realm-title">斗皇</div>
+                    <div class="realm-feature">掌控空间只属，引发天地异象</div>
+                    <div class="realm-desc">可大范围调动天地能量，举手投足间移山倒海，高阶斗皇甚至可短暂不依托斗气之翼滞空。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right border-gold">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">帝国巅峰。对应六品炼药师、六阶魔兽。足以震慑一个边缘帝国（如云山未出关前的加玛帝国最高战力）。</div>
+                </div>
+            </div>
+
+            <!-- 斗宗 -->
+            <div class="realm-card glow-red" id="realm-8">
+                <div class="realm-left">
+                    <div class="realm-title">斗宗</div>
+                    <div class="realm-feature">踏空而行，空间封锁</div>
+                    <div class="realm-desc">核心能力<span class="highlight-red">踏空而行</span>，彻底摆脱斗气化翼，可施展「空间封锁」禁锢对手，初步接触空间法则。
+                    </div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right border-red">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">黑角域霸主。对应七品炼药师、七阶魔兽。西北地域顶尖战力，具备进入中州核心区的基本资格。</div>
+                </div>
+            </div>
+
+            <!-- 斗尊 -->
+            <div class="realm-card glow-red" id="realm-9">
+                <div class="realm-left">
+                    <div class="realm-title">斗尊</div>
+                    <div class="realm-feature">空间穿梭，开辟虫洞</div>
+                    <div class="realm-desc">完全掌控空间之力，可以空间绞杀敌人，开辟稳定的空间通道。九星后需经历九转压缩斗气入圣。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星 ＆ 一至九转</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>...</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                        <div class="stage-node" style="background:#555; color:#fff;"><span>九转</span></div>
+                    </div>
+                </div>
+                <div class="realm-right border-red">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">中州明面巨擘。对应八品炼药师、八阶魔兽。四方阁阁主级别，中州各大一流势力的门面战力。</div>
+                </div>
+            </div>
+
+            <!-- 半圣 -->
+            <div class="realm-card glow-purple" id="realm-10">
+                <div class="realm-left">
+                    <div class="realm-title">半圣</div>
+                    <div class="realm-feature">肉身成圣，圣之威压</div>
+                    <div class="realm-desc">九转成圣的过渡阶段。已经脱离了尊境，拥有远超斗尊巅峰的毁灭能力，随手可碎裂百里虚空。</div>
+                    <div class="realm-stages-label">细分阶段：低阶、中阶、高阶</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>初</span></div>
+                        <div class="stage-node"><span>中</span></div>
+                        <div class="stage-node"><span>高</span></div>
+                    </div>
+                </div>
+                <div class="realm-right border-purple">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">超一流强者。足够统帅二宗三谷级别的顶尖势力。</div>
+                </div>
+            </div>
+
+            <!-- 斗圣 -->
+            <div class="realm-card glow-purple" id="realm-11">
+                <div class="realm-left">
+                    <div class="realm-title">斗圣</div>
+                    <div class="realm-feature">创造空间，法则之身</div>
+                    <div class="realm-desc">一念可碎山河。高阶斗圣可在虚空深处开辟出能供千万人生存的庞大「斗圣空间」。每一星的差距如隔天堑。</div>
+                    <div class="realm-stages-label">细分阶段：一至九星</div>
+                    <div class="realm-nodes">
+                        <div class="stage-node"><span>一</span></div>
+                        <div class="stage-node"><span>二</span></div>
+                        <div class="stage-node"><span>三</span></div>
+                        <div class="stage-node"><span>四</span></div>
+                        <div class="stage-node"><span>五</span></div>
+                        <div class="stage-node"><span>六</span></div>
+                        <div class="stage-node"><span>七</span></div>
+                        <div class="stage-node"><span>八</span></div>
+                        <div class="stage-node"><span>九</span></div>
+                    </div>
+                </div>
+                <div class="realm-right border-purple">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">远古种族核心。对应九品炼药师、九阶魔兽。真正的天地主宰，世间罕见的隐世老怪级底蕴。</div>
+                </div>
+            </div>
+
+            <!-- 斗帝 -->
+            <div class="realm-card glow-purple" id="realm-12"
+                style="border: 2px solid var(--color-purple); box-shadow: 0 0 50px rgba(157, 78, 221, 0.4);">
+                <div class="realm-left">
+                    <div class="realm-title" style="color: #fff; text-shadow: 0 0 40px #fff;">斗帝</div>
+                    <div class="realm-feature">位面主宰，改变血脉</div>
+                    <div class="realm-desc">立于斗气大陆的位面顶点。突破需吞噬位面源气。可改变自身与全部族群后裔的血脉，炼制无上「帝品丹药」。</div>
+                    <div class="realm-stages-label">状态：极境传说</div>
+                </div>
+                <div class="realm-right" style="border-left-color: #fff; background: rgba(157, 78, 221, 0.1);">
+                    <div class="realm-status-title">大陆地位评定</div>
+                    <div class="realm-status-desc">神明。撕裂位面空间前往大千世界的唯一门槛。</div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <div class="footer" style="text-align:center;padding:3rem 1rem;margin-top:4rem;border-top:1px solid rgba(220,180,110,0.2);font-size:0.9rem;color:rgba(255,255,255,0.5);display:flex;flex-direction:column;align-items:center;gap:0.8rem;width:100%;">
+        <h2 style="color:var(--color-gold);font-size:1.3rem;">《斗破苍穹》世界观百科</h2>
+        <p style="color:#fff;font-size:1rem;letter-spacing:2px;">三十年河东，三十年河西，莫欺少年穷</p>
+        <p><a href="index.html" style="color:var(--color-gold);">← 返回目录</a></p>
+    </div>
+    <button id="backToTop">↑</button>
+    <div class="clan-modal-overlay" id="clanModal"><div class="clan-modal-container"><span class="clan-modal-close" id="clanModalClose">&times;</span><div class="clan-modal-content" id="clanModalBody"></div></div></div>
+    <script src="js/app.js"></script>
+</body>
+</html>

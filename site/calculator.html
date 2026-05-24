@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>战力计算器 - 斗破苍穹世界观</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+    <div class="nav">
+        <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+        <div class="nav-container">
+            <a href="index.html">首页</a>
+            <a href="cultivation.html">斗气修为</a>
+            <a href="skills.html">功法斗技</a>
+            <a href="alchemy.html">炼药师丹药</a>
+            <a href="soul.html">灵魂力量</a>
+            <a href="fire.html">异火榜</a>
+            <a href="beast.html">血脉与魔兽</a>
+            <span class="nav-sep"></span>
+            <a href="clans.html">远古八族</a>
+            <a href="geography.html">地理格局</a>
+            <a href="forces.html">势力体系</a>
+            <a href="realm.html">秘境空间</a>
+            <a href="canaan.html">迦南学院</a>
+            <a href="hundian.html">魂殿全解</a>
+            <a href="ancient.html">古帝洞府</a>
+            <span class="nav-sep"></span>
+            <a href="timeline.html">剧情时间线</a>
+            <a href="xiaoyan.html">萧炎成长</a>
+            <a href="battle.html">战役复盘</a>
+            <a href="story.html">人物图鉴</a>
+            <a href="calculator.html" class="active">战力计算</a>
+        </div>
+    </div>
+    <div class="container">
+        <!-- 16. 战力计算器 -->
+        <section class="section" id="calculator">
+            <h2 class="section-title">17 互动工具：斗破苍穹战力计算器</h2>
+            <p class="section-desc">基准锚点：无修为普通凡人 = 1 | 永久综合战力 = 境界基础值 × 功法 × 斗技(含熟练度) × 异火 × 血脉 × 灵魂 × 肉身 × 装备 |
+                临时综合战力
+                = 永久 × 丹药 × 秘法 × 状态</p>
+            <div class="calc-container">
+                <div class="calc-settings">
+                    <h3 class="section-subtitle">永久参数设定</h3>
+                    <div class="calc-grid">
+                        <div class="calc-item">
+                            <label for="bigRealm">大境界</label>
+                            <select id="bigRealm">
+                                <option value="普通凡人">普通凡人</option>
+                                <option value="斗之气">斗之气</option>
+                                <option value="斗者">斗者</option>
+                                <option value="斗师">斗师</option>
+                                <option value="大斗师">大斗师</option>
+                                <option value="斗灵">斗灵</option>
+                                <option value="斗王">斗王</option>
+                                <option value="斗皇">斗皇</option>
+                                <option value="半步斗宗">半步斗宗</option>
+                                <option value="斗宗">斗宗</option>
+                                <option value="半步斗尊">半步斗尊</option>
+                                <option value="斗尊">斗尊</option>
+                                <option value="半步斗圣">半步斗圣</option>
+                                <option value="半圣">半圣</option>
+                                <option value="斗圣">斗圣</option>
+                                <option value="斗帝">斗帝</option>
+                            </select>
+                            <p class="calc-desc">含半步境界，严格遵循原著境界划分</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="subRealm">细分段位</label>
+                            <select id="subRealm">
+                                <option value="1.0">无修为</option>
+                            </select>
+                            <p class="calc-desc">自动匹配境界细分段位</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="gongfa">功法等级</label>
+                            <select id="gongfa">
+                                <option value="1.0">黄阶低级（×1.0）</option>
+                                <option value="1.05">黄阶中级（×1.05）</option>
+                                <option value="1.1">黄阶高级（×1.1）</option>
+                                <option value="1.2">玄阶低级（×1.2）</option>
+                                <option value="1.35">玄阶中级（×1.35）</option>
+                                <option value="1.55">玄阶高级（×1.55）</option>
+                                <option value="1.85">地阶低级（×1.85）</option>
+                                <option value="2.25">地阶中级（×2.25）</option>
+                                <option value="2.8">地阶高级（×2.8）</option>
+                                <option value="3.6">天阶低级（×3.6）</option>
+                                <option value="4.7">天阶中级（×4.7）</option>
+                                <option value="6.2">天阶高级（×6.2）</option>
+                                <option value="10.5">帝阶低级（×10.5）</option>
+                                <option value="16.0">帝阶中级（×16.0）</option>
+                                <option value="24.0">帝阶高级（×24.0）</option>
+                                <option value="50.0">焚诀·吞噬22种异火（×50.0）</option>
+                            </select>
+                            <p class="calc-desc">功法决定斗气运转效率，焚诀可随异火数量进化</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="douji">斗技等级</label>
+                            <select id="douji">
+                                <option value="1.0">黄阶低级（×1.0）</option>
+                                <option value="1.05">黄阶中级（×1.05）</option>
+                                <option value="1.1">黄阶高级（×1.1）</option>
+                                <option value="1.2">玄阶低级（×1.2）</option>
+                                <option value="1.35">玄阶中级（×1.35）</option>
+                                <option value="1.55">玄阶高级（×1.55）</option>
+                                <option value="1.85">地阶低级（×1.85）</option>
+                                <option value="2.25">地阶中级（×2.25）</option>
+                                <option value="2.8">地阶高级（×2.8）</option>
+                                <option value="3.6">天阶低级（×3.6）</option>
+                                <option value="4.7">天阶中级（×4.7）</option>
+                                <option value="6.2">天阶高级（×6.2）</option>
+                                <option value="10.5">帝阶低级（×10.5）</option>
+                                <option value="16.0">帝阶中级（×16.0）</option>
+                                <option value="24.0">帝阶高级（×24.0）</option>
+                            </select>
+                            <p class="calc-desc">斗技等级系数，需与熟练度相乘</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="shouliandu">斗技熟练度</label>
+                            <select id="shouliandu">
+                                <option value="0.9">入门（×0.9）</option>
+                                <option selected="" value="1.0">小成（×1.0）</option>
+                                <option value="1.15">大成（×1.15）</option>
+                                <option value="1.35">圆满（×1.35）</option>
+                                <option value="1.6">化境（×1.6）</option>
+                            </select>
+                            <p class="calc-desc">最终斗技加成 = 等级系数 × 熟练度系数</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="yihuo">异火/火焰</label>
+                            <select id="yihuo">
+                                <option value="1.0">无火焰（×1.0）</option>
+                                <option value="1.1">普通兽火/地火（×1.1）</option>
+                                <option value="1.3">玄黄炎·22名（×1.3）</option>
+                                <option value="1.4">万兽灵火·21名（×1.4）</option>
+                                <option value="1.5">幽冥毒火·20名（×1.5）</option>
+                                <option value="1.6">青莲地心火·19名（×1.6）</option>
+                                <option value="1.7">风怒龙炎·18名（×1.7）</option>
+                                <option value="1.8">火山石焰·17名（×1.8）</option>
+                                <option value="1.9">火云水炎·16名（×1.9）</option>
+                                <option value="2.0">海心焰·15名（×2.0）</option>
+                                <option value="2.2">陨落心炎·14名（×2.2）</option>
+                                <option value="2.4">龟灵地火·13名（×2.4）</option>
+                                <option value="2.6">九龙雷罡火·12名（×2.6）</option>
+                                <option value="2.8">骨灵冷火·11名（×2.8）</option>
+                                <option value="3.1">九幽风炎·10名（×3.1）</option>
+                                <option value="3.4">三千焱炎火·9名（×3.4）</option>
+                                <option value="3.7">红莲业火·8名（×3.7）</option>
+                                <option value="4.0">九幽金祖火·7名（×4.0）</option>
+                                <option value="4.4">八荒破灭焱·6名（×4.4）</option>
+                                <option value="4.8">生灵之焱·5名（×4.8）</option>
+                                <option value="5.2">虚无吞炎·4名（×5.2）</option>
+                                <option value="5.6">金帝焚天炎·3名（×5.6）</option>
+                                <option value="6.5">净莲妖火·2名（×6.5）</option>
+                                <option value="10.0">帝炎（融合22种异火）·1名（×10.0）</option>
+                            </select>
+                            <p class="calc-desc">异火榜完整收录，多火融合需手动计算融合系数</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="xuemai">血脉/体质</label>
+                            <select id="xuemai">
+                                <option value="1.0">普通凡人血脉（×1.0）</option>
+                                <option value="1.1">宗门/家族传承血脉（×1.1）</option>
+                                <option value="1.3">远古种族旁系血脉（×1.3）</option>
+                                <option value="1.6">远古种族核心血脉（×1.6）</option>
+                                <option value="2.2">远古种族神品血脉（×2.2）</option>
+                                <option value="2.5">斗帝旁系血脉（×2.5）</option>
+                                <option value="3.5">斗帝直系血脉（×3.5）</option>
+                                <option value="1.8">厄难毒体·小成（×1.8）</option>
+                                <option value="2.5">厄难毒体·大成（×2.5）</option>
+                                <option value="3.5">厄难毒体·圆满（×3.5）</option>
+                                <option value="3.0">龙凰体质（×3.0）</option>
+                                <option value="2.0">先天道体（×2.0）</option>
+                            </select>
+                            <p class="calc-desc">含特殊体质选项</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="linghun">灵魂境界</label>
+                            <select id="linghun">
+                                <option value="1.0">凡境（×1.0）</option>
+                                <option value="1.1">灵境初期（×1.1）</option>
+                                <option value="1.15">灵境中期（×1.15）</option>
+                                <option value="1.2">灵境后期（×1.2）</option>
+                                <option value="1.25">灵境巅峰（×1.25）</option>
+                                <option value="1.35">天境初期（×1.35）</option>
+                                <option value="1.45">天境中期（×1.45）</option>
+                                <option value="1.6">天境后期（×1.6）</option>
+                                <option value="1.8">天境巅峰（×1.8）</option>
+                                <option value="2.5">帝境灵魂（×2.5）</option>
+                            </select>
+                            <p class="calc-desc">灵魂力影响斗气控制与感知</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="roushen">肉身强度</label>
+                            <select id="roushen">
+                                <option value="1.0">凡胎（×1.0）</option>
+                                <option value="1.05">灵体（×1.05）</option>
+                                <option value="1.1">王体（×1.1）</option>
+                                <option value="1.15">皇体（×1.15）</option>
+                                <option value="1.25">宗体（×1.25）</option>
+                                <option value="1.4">尊体（×1.4）</option>
+                                <option value="1.6">半圣体（×1.6）</option>
+                                <option value="1.8">圣体初期（×1.8）</option>
+                                <option value="2.0">圣体中期（×2.0）</option>
+                                <option value="2.3">圣体后期（×2.3）</option>
+                                <option value="2.7">圣体巅峰（×2.7）</option>
+                                <option value="4.0">帝体（×4.0）</option>
+                            </select>
+                            <p class="calc-desc">肉身越强，近战与防御越优</p>
+                        </div>
+                        <div class="calc-item">
+                            <label for="zhuangbei">装备等级</label>
+                            <select id="zhuangbei">
+                                <option value="1.0">凡器（×1.0）</option>
+                                <option value="1.05">灵器低级（×1.05）</option>
+                                <option value="1.1">灵器中级（×1.1）</option>
+                                <option value="1.15">灵器高级（×1.15）</option>
+                                <option value="1.2">地器低级（×1.2）</option>
+                                <option value="1.3">地器中级（×1.3）</option>
+                                <option value="1.4">地器高级（×1.4）</option>
+                                <option value="1.55">天器低级（×1.55）</option>
+                                <option value="1.7">天器中级（×1.7）</option>
+                                <option value="1.9">天器高级（×1.9）</option>
+                                <option value="2.2">圣器低级（×2.2）</option>
+                                <option value="2.6">圣器中级（×2.6）</option>
+                                <option value="3.2">圣器高级（×3.2）</option>
+                                <option value="4.0">帝器低级（×4.0）</option>
+                                <option value="5.5">帝器中级（×5.5）</option>
+                                <option value="7.5">帝器高级（×7.5）</option>
+                            </select>
+                            <p class="calc-desc">含灵器→帝器全等级</p>
+                        </div>
+                    </div>
+                    <h3 class="section-subtitle">临时加成（战斗中生效）</h3>
+                    <div class="calc-grid">
+                        <div class="calc-item">
+                            <label for="danyao">丹药加成</label>
+                            <select id="danyao">
+                                <option value="1.0">无丹药（×1.0）</option>
+                                <option value="1.5">血莲丹（×1.5 / 10分钟）</option>
+                                <option value="2.0">地灵丹（×2.0 / 30分钟）</option>
+                                <option value="3.0">菩提丹（×3.0 / 1小时）</option>
+                                <option value="10.0">帝品雏丹（×10.0 / 1天）</option>
+                            </select>
+                        </div>
+                        <div class="calc-item">
+                            <label for="mifa">秘法加成</label>
+                            <select id="mifa">
+                                <option value="1.0">无秘法（×1.0）</option>
+                                <option value="2.0">天火三玄变·第一变（×2.0）</option>
+                                <option value="3.5">天火三玄变·第二变（×3.5）</option>
+                                <option value="5.5">天火三玄变·第三变（×5.5）</option>
+                                <option value="10.0">佛怒火莲·2种异火（×10.0）</option>
+                                <option value="25.0">佛怒火莲·3种异火（×25.0）</option>
+                                <option value="50.0">佛怒火莲·4种异火（×50.0）</option>
+                            </select>
+                        </div>
+                        <div class="calc-item">
+                            <label for="zhuangtai">状态加成</label>
+                            <select id="zhuangtai">
+                                <option selected="" value="1.0">正常（×1.0）</option>
+                                <option value="1.1">全盛（×1.1）</option>
+                                <option value="1.3">暴怒（×1.3）</option>
+                                <option value="0.9">轻伤（×0.9）</option>
+                                <option value="0.5">重伤（×0.5）</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="calc-btn" id="calcBtn">⚡ 计算战力</button>
+                    <h3 class="section-subtitle">原著角色一键填充</h3>
+                    <div class="preset-btns">
+                        <button class="preset-btn" data-preset="xiaoyan1">乌坦城萧炎（斗之气9段）</button>
+                        <button class="preset-btn" data-preset="xiaoyan2">三年之约萧炎（斗王巅峰）</button>
+                        <button class="preset-btn" data-preset="xiaoyan3">迦南学院萧炎（斗宗巅峰）</button>
+                        <button class="preset-btn" data-preset="xiaoyan4">双帝之战前萧炎（9星斗圣）</button>
+                    </div>
+                    <button class="logic-btn logic-trigger-btn" id="logicBtn"
+                        onclick="document.getElementById('logicModal').classList.add('active')">📖 点击了解计算逻辑</button>
+                </div>
+                <div class="calc-result">
+                    <h3 class="section-subtitle"
+                        style="display:flex; justify-content:space-between; align-items:center;">
+                        战力测算面板
+                        <button class="logic-trigger-btn"
+                            style="font-size:0.9rem; background:var(--color-gold-dark); border:none; padding:0.4rem 0.8rem; border-radius:4px; color:#fff; cursor:pointer;">查看算法逻辑</button>
+                    </h3>
+
+                    <div class="power-dashboard">
+                        <!-- 基础面板 -->
+                        <div class="dashboard-card">
+                            <div class="dashboard-title">纯肉身基础战力 <span>(无任何加成)</span></div>
+                            <div class="dashboard-value" id="baseDisplay"
+                                style="color: var(--color-gold); font-size: 2.2rem; text-shadow: 0 0 10px rgba(220,180,110,0.2);">
+                                1</div>
+                        </div>
+
+                        <!-- 乘区系数面板 -->
+                        <div class="dashboard-card">
+                            <div class="dashboard-title">全修仙乘区倍率解析</div>
+                            <div class="mult-grid">
+                                <div class="mult-badge"><span>功法增幅</span><span id="gfDisplay">×1.0</span></div>
+                                <div class="mult-badge"><span>斗技增幅</span><span id="djDisplay">×1.0</span></div>
+                                <div class="mult-badge"><span>异火增幅</span><span id="yhDisplay">×1.0</span></div>
+                                <div class="mult-badge"><span>血脉增幅</span><span id="xmDisplay">×1.0</span></div>
+                                <div class="mult-badge bonus"><span>灵魂加成</span><span id="lhDisplay">+0</span></div>
+                                <div class="mult-badge bonus"><span>肉身加成</span><span id="rsDisplay">+0</span></div>
+                                <div class="mult-badge bonus"><span>装备加成</span><span id="zbDisplay">+0</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 永久战力 -->
+                        <div class="dashboard-card">
+                            <div class="dashboard-title" style="color: var(--color-flame-orange);">永久常态战力
+                                <span>(当前境界真实水平)</span>
+                            </div>
+                            <div class="dashboard-value" id="permDisplay" style="color: var(--color-flame-orange);">
+                                1
+                            </div>
+                        </div>
+
+                        <!-- 临时爆发与最终战力 -->
+                        <div class="dashboard-card"
+                            style="border-color: var(--color-red-light); box-shadow: 0 0 20px rgba(220,50,50,0.1);">
+                            <div class="dashboard-title"
+                                style="color: var(--color-red-light); border-bottom-color: rgba(220,50,50,0.3);">
+                                极限爆发战力 <span>(底牌全出)</span>
+                            </div>
+
+                            <div class="mult-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 1rem;">
+                                <div class="mult-badge" style="border-color:var(--color-red-light);">
+                                    <span>丹药狂化</span><span id="dyDisplay">×1.0</span>
+                                </div>
+                                <div class="mult-badge" style="border-color:var(--color-red-light);">
+                                    <span>秘法祭献</span><span id="mfDisplay">×1.0</span>
+                                </div>
+                                <div class="mult-badge" style="border-color:var(--color-red-light);">
+                                    <span>生死状态</span><span id="ztDisplay">×1.0</span>
+                                </div>
+                            </div>
+
+                            <div class="dashboard-value value-highlight" id="finalDisplay">1</div>
+                            <div id="compareDisplay"
+                                style="text-align: center; color: #aaa; font-size: 0.95rem; margin-top: 1rem; border-top: 1px dashed rgba(255,255,255,0.1); padding-top: 1rem;">
+                                相当于 1 个普通凡人的战力
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- End of first calc-container -->
+
+            <!-- 合并原 18模块 -->
+            <div style="margin-top: 4rem; border-top: 1px dashed rgba(255,255,255,0.2); padding-top: 2rem;">
+                <h2 class="section-title" style="margin-bottom: 1rem;">终极应用：战力倒推境界与越阶判定</h2>
+                <p class="section-desc">输入战力数值，系统将根据「纯基础战力对照表」精准锁定你的真实境界，并参考「常态满配战力区间」给出你的越阶战斗力评估。</p>
+
+                <div class="calc-container">
+                    <div class="calc-settings">
+                        <h3 class="section-subtitle">输入战力数据</h3>
+                        <div class="calc-grid">
+                            <div class="calc-item">
+                                <label for="revInput">战力数值 (例如 15000 或 1.5e4):</label>
+                                <div
+                                    style="position: relative; display: flex; align-items: center; margin-top: 0.5rem;">
+                                    <span
+                                        style="position: absolute; left: 12px; color: var(--color-gold); font-size: 1.2rem;">⚡</span>
+                                    <input type="number" id="revInput" placeholder="请输入具体战力数值..."
+                                        style="width: 100%; padding: 0.8rem 1rem 0.8rem 2.5rem; border-radius: 8px; border: 1px solid rgba(220,180,110,0.5); background: rgba(0,0,0,0.6); color: var(--color-gold); font-size: 1.1rem; font-weight: bold; transition: all 0.3s ease; outline: none; box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);">
+                                </div>
+                                <p class="calc-desc" style="margin-top: 0.5rem;">输入数值自动匹配原著纯基础境界与综合常态水平。</p>
+                            </div>
+                        </div>
+                        <button class="calc-btn" id="revBtn"
+                            style="margin-top: 1.5rem; width: 100%; font-size: 1.2rem; padding: 1rem; box-shadow: 0 4px 15px rgba(220, 50, 50, 0.3); border: 1px solid rgba(255,100,100,0.5);">👁️
+                            洞察真实境界</button>
+
+                        <h3 class="section-subtitle" style="margin-top: 1rem;">快速测试模板</h3>
+                        <div class="preset-btns">
+                            <button class="preset-btn rev-preset" data-val="150">斗者巅峰 (150)</button>
+                            <button class="preset-btn rev-preset" data-val="30000">大斗师越阶 (3万)</button>
+                            <button class="preset-btn rev-preset" data-val="2420000">三年之约 (242万)</button>
+                            <button class="preset-btn rev-preset" data-val="3600000000000">斗帝初期 (3.6万亿)</button>
+                        </div>
+                    </div>
+
+                    <div class="calc-result">
+                        <h3 class="section-subtitle"
+                            style="display:flex; justify-content:space-between; align-items:center;">
+                            倒推结果分析 <button class="rev-logic-trigger-btn"
+                                style="font-size:0.9rem; background:var(--color-gold-dark); border:none; padding:0.4rem 0.8rem; border-radius:4px; color:#fff; cursor:pointer;"
+                                onclick="document.getElementById('reverseLogicModal').classList.add('active')">查看算法逻辑</button>
+                        </h3>
+
+                        <div class="calc-final" style="margin-bottom: 1rem;">
+                            <div class="calc-final-label">精准真实境界判定 (纯基础对应)</div>
+                            <div class="calc-final-value" id="revTrueRealm"
+                                style="color: var(--color-red-light); font-size: 1.8rem; font-weight: bold; text-shadow: 0 0 10px rgba(220, 50, 50, 0.5); letter-spacing: 2px;">
+                                等待输入...</div>
+                            <div class="calc-compare" id="revTrueDetail"
+                                style="color: #ccc; margin-top: 0.5rem; font-size: 0.9rem;">分析纯基础战力对应层级</div>
+                        </div>
+
+                        <div class="calc-final" style="margin-bottom: 1rem;">
+                            <div class="calc-final-label">常态满配战斗力判定 (含同阶满加成参考)</div>
+                            <div class="calc-final-value" id="revCombatRealm"
+                                style="color: var(--color-gold); font-size: 1.5rem; font-weight: bold; text-shadow: 0 0 10px rgba(220, 180, 110, 0.3);">
+                                等待输入...</div>
+                            <div class="calc-compare" id="revCombatDetail"
+                                style="color: #ccc; margin-top: 0.5rem; font-size: 0.9rem;">分析常规越阶战斗水平</div>
+                        </div>
+
+                        <div
+                            style="margin-top: 1rem; padding: 1rem; border-left: 3px solid var(--color-gold); background: rgba(220,180,110,0.1); border-radius: 4px;">
+                            <p style="font-size: 0.85rem; color: #bbb; line-height: 1.5; margin: 0;">
+                                <strong style="color: var(--color-gold);">💡 越阶判定规则：</strong><br>
+                                如果综合战力跨区间达到下一大境界下限，仅代表拥有<span
+                                    style="color:var(--color-red-light)">越阶战力</span>，并不改变真实境界。<br>
+                                <em style="color: #999;">注：斗帝与斗圣存在规则级壁垒，无论斗圣战力多高，均无法跨过帝境壁垒。</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+        </section>
+
+        <!-- 计算逻辑弹窗 -->
+        <div class="logic-modal-overlay" id="logicModal">
+            <div class="logic-modal">
+                <button class="logic-modal-close" id="logicClose"
+                    onclick="document.getElementById('logicModal').classList.remove('active')">✕</button>
+                <h2 class="logic-modal-title">《斗破苍穹》原著战力数值体系 · 完整版</h2>
+                <div class="logic-modal-body">
+                    <p>本体系严格遵循原著"一境一天堑、越阶需多重机缘"的核心逻辑，补充半步境界、灵魂/肉身/装备等原著关键维度，细化异火、功法、斗技的等级对应关系。</p>
+                    <h3>一、核心计算公式</h3>
+                    <div class="logic-formula">永久综合战力 = 境界基础值 × 功法 × 斗技(含熟练度) × 异火 × 血脉 × 灵魂 × 肉身 × 装备</div>
+                    <div class="logic-formula">临时综合战力 = 永久综合战力 × 丹药 × 秘法 × 状态</div>
+                    <p>采用<strong>乘法叠加</strong>模式，7项永久加成决定角色稳定战力，3项临时加成反映战斗中的爆发。基准锚点：无修为普通凡人 = <strong>1</strong>。</p>
+                    <h3>二、完整境界划分与基础战力</h3>
+                    <p>从低到高分为「斗之气→斗者→斗师→大斗师→斗灵→斗王→斗皇→<strong>半步斗宗</strong>→斗宗→<strong>半步斗尊</strong>→斗尊→<strong>半步斗圣</strong>→半圣→斗圣→斗帝」，斗圣/斗帝细化为1-9星。
+                    </p>
+                    <div class="jade-grid">
+                        <div class="jade-card">
+                            <div class="jade-card-title">普通凡人</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>无修为</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>1</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>无斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗之气</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>1段</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>2</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>感应斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗之气</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>3段</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>4</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>感应斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗之气</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>6段</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>7</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>感应斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗之气</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>9段</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>10</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>感应斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗者 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>50</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>凝气旋</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗者 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>75</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>凝气旋</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗者 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>100</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>凝气旋</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗者</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>150</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>凝气旋</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗师 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>450</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气外放</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗师 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>700</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气外放</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗师 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>1,000</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气外放</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗师</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>1,500</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气外放</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">大斗师 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>6,000</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气铠甲</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">大斗师 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>9,000</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气铠甲</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">大斗师 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>1.3万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气铠甲</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">大斗师</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>2万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气铠甲</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗灵 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>10万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气凝物</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗灵 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>15万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气凝物</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗灵 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>22万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气凝物</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗灵</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>30万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>斗气凝物</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗王 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>180万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>御空飞行</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗王 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>270万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>御空飞行</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗王 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>400万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>御空飞行</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗王</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>600万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>御空飞行</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗皇 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>4,200万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>调动天地斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗皇 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>6,500万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>调动天地斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗皇 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>9,000万</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>调动天地斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗皇</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>1.2亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>调动天地斗气</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">半步斗宗</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>-</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>2.5亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>触摸空间之力</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗宗 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>12亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>空间封锁穿梭</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗宗 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>18亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>空间封锁穿梭</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗宗 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>25亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>空间封锁穿梭</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗宗</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>35亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>空间封锁穿梭</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">半步斗尊</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>-</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>500亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>空间规则初悟</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗尊 · 初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>3,500亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>撕裂空间</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗尊 · 中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>5,000亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>撕裂空间</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗尊 · 后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>7,500亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>撕裂空间</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗尊</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>1.2万亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>撕裂空间</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">半步斗圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>-</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>3万亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>触摸圣道</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">半圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>低阶</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>5万亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>圣道规则</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">半圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>中阶</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>15万亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>圣道规则</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">半圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>高阶</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>40万亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>圣道规则</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>1星</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>200~600万亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>2星</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>800~2,000万亿
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>3星</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>2,500~5,400万亿
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>4-8星</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>每星起点×3</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣 · 9星初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>10亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣 · 9星后期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>30亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗圣</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>9星巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>39.37亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×3递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗帝</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>1星</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>40~150万亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×2.5递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗帝</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>2-8星</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>每星起点×2.5</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×2.5递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗帝 · 9星初期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>10亿亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×2.5递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗帝 · 9星中期</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>25亿亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×2.5递进</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗帝</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">段位：</span>9星巅峰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">基础值：</span>40亿亿亿</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">参考：</span>每星×2.5递进</div>
+                        </div>
+                    </div>
+                    <h3>三、功法等级系数</h3>
+                    <p>功法决定斗气运转效率与储量上限。</p>
+                    <div class="jade-grid">
+                        <div class="jade-card">
+                            <div class="jade-card-title">黄阶低/中/高</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.0 / ×1.05 /
+                                ×1.1
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>最基础功法</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">玄阶低/中/高</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.2 / ×1.35 /
+                                ×1.55
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>宗门核心功法</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">地阶低/中/高</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.85 / ×2.25 /
+                                ×2.8
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>远古种族传承</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">天阶低/中/高</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×3.6 / ×4.7 /
+                                ×6.2
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>斗帝传承级</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">帝阶低/中/高</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×10.5 / ×16.0 /
+                                ×24.0
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>斗帝级功法</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">焚诀（特殊）</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>初始×3.5→吞22火后×50
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>可进化功法</div>
+                        </div>
+                    </div>
+                    <h3>四、斗技等级 + 熟练度</h3>
+                    <p>最终斗技加成 = 斗技等级系数 × 熟练度系数（入门×0.9 / 小成×1.0 / 大成×1.15 / 圆满×1.35 / 化境×1.6）</p>
+                    <h3>五、异火加成（完整异火榜）</h3>
+                    <p>22种异火×1.3~×6.5，帝炎（融合22种）×10.0。多火融合系数 = 1 + 0.2×(n-1)</p>
+                    <div class="jade-grid">
+                        <div class="jade-card">
+                            <div class="jade-card-title">无/兽火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.0 / ×1.1</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>-</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">玄黄炎/万兽灵火/幽冥毒火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.3 / ×1.4 /
+                                ×1.5
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>22-20</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">青莲地心火/风怒龙炎/火山石焰</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.6 / ×1.7 /
+                                ×1.8
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>19-17</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">火云水炎/海心焰/陨落心炎</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.9 / ×2.0 /
+                                ×2.2
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>16-14</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">龟灵地火/九龙雷罡火/骨灵冷火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×2.4 / ×2.6 /
+                                ×2.8
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>13-11</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">九幽风炎/三千焱炎火/红莲业火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×3.1 / ×3.4 /
+                                ×3.7
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>10-8</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">九幽金祖火/八荒破灭焱/生灵之焱</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×4.0 / ×4.4 /
+                                ×4.8
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>7-5</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">虚无吞炎/金帝焚天炎/净莲妖火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×5.2 / ×5.6 /
+                                ×6.5
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>4-2</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">帝炎（融合22种异火）</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×10.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">排名：</span>1</div>
+                        </div>
+                    </div>
+                    <h3>六、血脉/体质</h3>
+                    <div class="jade-grid">
+                        <div class="jade-card">
+                            <div class="jade-card-title">普通凡人</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.0</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">宗门/家族传承</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.1</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">远古种族旁系/核心/神品</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.3 / ×1.6 /
+                                ×2.2
+                            </div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">斗帝旁系/直系</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×2.5 / ×3.5</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">厄难毒体（小/大/圆满）</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.8 / ×2.5 /
+                                ×3.5
+                            </div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">龙凰体质/先天道体</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×3.0 / ×2.0</div>
+                        </div>
+                    </div>
+                    <h3>七、灵魂境界</h3>
+                    <p>凡境×1.0 → 灵境(初/中/后/巅)×1.1~×1.25 → 天境(初/中/后/巅)×1.35~×1.8 → 帝境×2.5</p>
+                    <h3>八、肉身强度</h3>
+                    <p>凡胎×1.0 → 灵体×1.05 → 王体×1.1 → 皇体×1.15 → 宗体×1.25 → 尊体×1.4 → 半圣体×1.6 → 圣体(初/中/后/巅)×1.8~×2.7 → 帝体×4.0
+                    </p>
+                    <h3>九、装备等级</h3>
+                    <p>凡器×1.0 → 灵器(低/中/高)×1.05~×1.15 → 地器(低/中/高)×1.2~×1.4 → 天器(低/中/高)×1.55~×1.9 → 圣器(低/中/高)×2.2~×3.2 →
+                        帝器(低/中/高)×4.0~×7.5</p>
+                    <h3>十、临时加成</h3>
+                    <div class="jade-grid">
+                        <div class="jade-card">
+                            <div class="jade-card-title">丹药</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>血莲丹</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.5</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>10分钟</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">丹药</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>地灵丹</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×2.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>30分钟</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">丹药</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>菩提丹</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×3.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>1小时</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">丹药</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>帝品雏丹</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×10.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>1天</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">秘法</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>天火三玄变·一变</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×2.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>15分钟</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">秘法</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>天火三玄变·二变</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×3.5</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>10分钟</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">秘法</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>天火三玄变·三变</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×5.5</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>5分钟</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">秘法</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>佛怒火莲·2异火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×10.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>一次性</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">秘法</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>佛怒火莲·3异火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×25.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>一次性</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">秘法</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>佛怒火莲·4异火</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×50.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>一次性</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">状态</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>全盛/暴怒</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.1 / ×1.3</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>正面状态</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">状态</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>正常</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×1.0</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>基准</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">状态</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>轻伤</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×0.9</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>受轻伤</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">状态</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">名称：</span>重伤</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">系数：</span>×0.5</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">说明：</span>受重伤</div>
+                        </div>
+                    </div>
+                    <h3>十一、角色战力验证</h3>
+                    <div class="jade-grid">
+                        <div class="jade-card">
+                            <div class="jade-card-title">乌坦城萧炎</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">境界(基础值)：</span>斗之气9段(10)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">功法：</span>黄阶高级(×1.1)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">斗技：</span>玄阶低级·小成(1.2)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">异火：</span>无(×1)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">血脉：</span>×1</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">灵魂：</span>凡(×1)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">肉身：</span>凡(×1)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">装备：</span>凡(×1)</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">三年之约萧炎</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">境界(基础值)：</span>斗王巅峰(600万)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">功法：</span>焚诀2火(×4.7)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">斗技：</span>地阶高级·大成(3.22)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">异火：</span>2火融合(×2.64)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">血脉：</span>×1</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">灵魂：</span>灵后(×1.2)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">肉身：</span>王(×1.1)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">装备：</span>玄重尺(×1.4)</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">迦南学院萧炎</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">境界(基础值)：</span>斗宗巅峰(35亿)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">功法：</span>焚诀3火(×5.7)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">斗技：</span>地阶高级·圆满(3.78)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">异火：</span>3火融合(×3.92)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">血脉：</span>×1.3</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">灵魂：</span>天初(×1.35)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">肉身：</span>宗(×1.25)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">装备：</span>天器中(×1.7)</div>
+                        </div>
+                        <div class="jade-card">
+                            <div class="jade-card-title">双帝之战前萧炎</div>
+                            <div class="jade-card-content"><span
+                                    class="jade-card-highlight">境界(基础值)：</span>9星斗圣(39.37亿亿)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">功法：</span>焚诀22火(×50)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">斗技：</span>天阶高级·化境(9.92)
+                            </div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">异火：</span>帝炎(×10)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">血脉：</span>×3.5</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">灵魂：</span>帝(×2.5)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">肉身：</span>圣巅(×2.7)</div>
+                            <div class="jade-card-content"><span class="jade-card-highlight">装备：</span>帝器(×3.5)</div>
+                        </div>
+                    </div>
+                    <h3>十二、设计理念</h3>
+                    <ul>
+                        <li><strong>指数级跃迁</strong>：每个大境界间差距约7-10倍，体现原著"差一个大境界犹如天堑"。</li>
+                        <li><strong>乘法叠加</strong>：10项加成系数相乘，顶级配置可越数个小境界杀敌。</li>
+                        <li><strong>越阶需多重机缘</strong>：单一加成无法实现越阶，需高阶功法+异火+血脉+装备叠加。</li>
+                        <li><strong>斗圣×3、斗帝×2.5递进</strong>：九星斗圣到斗帝约100倍跃迁，还原"斗帝碾压一切斗圣"。</li>
+                        <li><strong>战力波动</strong>：实际战斗中，临时加成+战斗经验+环境因素导致±30%波动。</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 倒推逻辑弹窗 -->
+    <div class="logic-modal-overlay" id="reverseLogicModal">
+        <div class="logic-modal" style="max-width: 900px;">
+            <button class="logic-modal-close" id="reverseLogicClose"
+                onclick="document.getElementById('reverseLogicModal').classList.remove('active')">✕</button>
+            <h2 class="logic-modal-title">《斗破苍穹》战力数值-境界倒推对照表</h2>
+            <div class="logic-modal-body">
+                <p>本表100%贴合<strong>压缩优化后的原著正统战力体系</strong>，分为「精准金标准表」和「实战参考表」两大核心模块，区间连续无断层，可直接通过战力数值反向锁定对应境界，同时配套极简判定规则，避免误判。
+                </p>
+                <h3 style="margin-top: 1.5rem; color: var(--color-flame-orange);">【前置使用说明（必看）】</h3>
+                <ol style="margin-bottom:1.5rem;">
+                    <li><strong>金标准原则</strong>：无任何加成的「纯基础战力」，是判定<strong>真实境界</strong>的唯一绝对标准，任何综合战力、爆发战力都不能推翻基础战力对应的真实境界。
+                    </li>
+                    <li><strong>常态优先原则</strong>：仅持续稳定的常态战力可用于境界判定，短时间临时爆发战力（丹药、秘法、佛怒火莲等）仅评估实战上限，不纳入真实境界判定。</li>
+                    <li><strong>规则壁垒原则</strong>：斗帝与斗圣存在原著明确的规则级壁垒，哪怕9星斗圣巅峰的综合战力跑分数值溢出，也无法正面抗衡斗帝，此规则优先级永远高于数值对比。</li>
+                </ol>
+                <h3 style="margin-top: 1.5rem; color: var(--color-gold);">一、纯基础战力-境界精准倒推对照表</h3>
+                <p>本表为<strong>无任何功法、斗技、血脉等加成</strong>的境界固有战力区间，是倒推真实境界的金标准。</p>
+                <div class="jade-grid">
+                    <div class="jade-card">
+                        <div class="jade-card-title">普通凡人</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>无修为</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1.0</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>体系基准锚点</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗之气</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>1段</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>2.0</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>入门</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗之气</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>2-3段</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>3.0 - 4.0</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗之气</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>4-6段</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>5.0 - 7.0</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗之气</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>7-9段</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>8.0 - 10.0</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>9段圆满，触摸斗者门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗者 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>50.0</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>凝聚气旋，脱离凡人</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗者 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>60.0 - 75.0</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗者 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>80.0 - 100.0
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗者</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>110.0 - 150.0
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸斗师门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗师 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>400.0</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>斗气外放，核心门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗师 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>450.0 - 600.0
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗师 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>700.0 - 900.0
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗师</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1000.0 - 1200.0
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸大斗师门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">大斗师 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>3300.0</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>凝聚斗气铠甲，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">大斗师 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>3800.0 - 5000.0
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">大斗师 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>6000.0 - 8000.0
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">大斗师</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>9000.0 - 10000.0
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸斗灵门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗灵 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>2万（20000.0）</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>斗气凝物，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗灵 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>2.2万 - 3万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗灵 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>3.5万 - 4.5万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗灵</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>5万 - 6万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸斗王门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗王 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>12万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>凝聚斗翼御空，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗王 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>14万 - 18万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗王 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>20万 - 27万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗王</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>30万 - 36万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸半步斗宗门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">半步斗宗</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>-</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>37万 - 45万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>初步触摸空间之力，过渡境界</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗宗 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>60万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>掌握空间封锁，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗宗 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>70万 - 90万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗宗 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>100万 - 135万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗宗</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>150万 - 180万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸半步斗尊门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">半步斗尊</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>-</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>190万 - 250万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>领悟空间规则，过渡境界</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗尊 · 初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>350万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>搭建稳定空间通道，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗尊 · 中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>400万 - 525万</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗尊 · 后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>600万 - 787.5万
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗尊</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>850万 - 1050万
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸半步斗圣门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">半步斗圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>-</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1100万 - 1500万
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>触摸圣道规则，过渡境界</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">半圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>低阶</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>2200万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圣道规则入门，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">半圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>中阶</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>2500万 - 4000万
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">半圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>高阶</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>5000万 - 7500万
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>圆满触摸斗圣门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗圣 · 1星初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1.2亿</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>开辟稳定小世界，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗圣 · 1星中期/后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1.4亿 - 2.7亿</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>1星巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>3亿 - 3.6亿</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>2-8星(所有)</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>每升一星，巅峰战力×2</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>4亿 - 460.8亿</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">高阶斗圣 · 9星初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>600亿</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>小世界可独立存在，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">高阶斗圣 · 9星中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>700亿 - 900亿</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">高阶斗圣 · 9星后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1000亿 - 1350亿
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">高阶斗圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>9星巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>1500亿 - 1800亿
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>凡俗境界顶点，触摸斗帝门槛</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗帝 · 1星初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>3.6万亿</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>掌握斗帝规则，核心标志</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗帝 · 1星中期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>4万亿 - 5.4万亿</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗帝 · 1星后期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>6万亿 - 8.1万亿</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗帝</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>1星巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>9万亿 - 10.8万亿
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗帝</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">细分段位：</span>2-9星(每一星)</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">战力数值区间：</span>每升一星，巅峰战力×1.5
+                        </div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">备注说明：</span>11万亿 - 24.3万亿</div>
+                    </div>
+                </div>
+                <p><strong>临界值补充说明：</strong>数值刚好等于区间下限，可以直接判定为对应段位初期；刚好等于区间上限，判定为对应段位巅峰，不向上晋级；同大境界内处于区间正中间按「就高不就低」原则判定。
+                </p>
+                <h3 style="margin-top: 2rem; color: var(--color-gold);">二、常态满配综合战力-境界参考对照表</h3>
+                <p>本表为<strong>同境界顶配加成</strong>（包含功法/斗技/异火/魂/体/装备等所有顶配叠加）后的常态战力参考区间，适配原著主角或有核心机缘的天才角色，存在±20%的浮动空间。</p>
+                <div class="jade-grid">
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗者巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>150 - 300</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">原著典型角色与时期参考：</span>乌坦城三年之约前的萧炎
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗师巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>1200 - 3000
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>加玛帝国炼药师大会过程中的萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">大斗师巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>1万 - 2.5万</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">原著典型角色与时期参考：</span>魔兽山脉历练完成后的萧炎
+                        </div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗灵巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>6万 - 15万</div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>塔戈尔沙漠收服青莲地心火后的萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗王巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>36万 - 300万
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>三年之约正式对战云山的萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗宗巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>180万 - 2600万
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>迦南学院陨落心炎篇后期萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">斗尊巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>1050万 - 8000万
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>中州丹会夺冠时期的辉煌萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">高阶半圣</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>7500万 - 2亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>刚刚使用躯体复活成功的药老</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">1星斗圣巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>3.6亿 - 15亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>准备收服净莲妖火之前的萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">3星斗圣巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>14.4亿 - 60亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>天府联盟刚刚宣告成立时期的萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">6星斗圣巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>115.2亿 - 500亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>进入古帝洞府历练时期的萧炎</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">9星斗圣巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>1800亿 - 55万亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>双帝之战前的萧炎、古元及老龙皇烛坤</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">1星斗帝初期</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>3.6万亿 - 20万亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>刚刚突破斗帝完成蜕变的萧炎与魂天帝</div>
+                    </div>
+                    <div class="jade-card">
+                        <div class="jade-card-title">1星斗帝巅峰</div>
+                        <div class="jade-card-content"><span class="jade-card-highlight">常态满配战力参考：</span>10.8万亿 - 50万亿
+                        </div>
+                        <div class="jade-card-content"><span
+                                class="jade-card-highlight">原著典型角色与时期参考：</span>双帝之战最终决战时刻极尽升华的萧炎</div>
+                    </div>
+                </div>
+                <h3 style="margin-top: 2rem; color: var(--color-gold);">三、极简倒推判定黄金规则</h3>
+                <h4 style="color: var(--color-red-light);">1. 跨区间战力判定规则</h4>
+                <ul>
+                    <li><strong>基础战力跨区间</strong>：达到下一个大境界的基础下限+掌握对应核心能力，直接判定为突破至该境界；仅数值达标、未能掌握核心能力，只能判定为过渡的“半步”境界。</li>
+                    <li><strong>综合战力跨区间</strong>（仅代表实战越阶能力，绝不改变其真实境界）：<br />
+                        - 跨越1个小段位：同境界无敌；<br />
+                        - 跨越1个大境界初期：常规越阶，可击杀低阶同境界的普通对手；<br />
+                        - 跨越1个大境界巅峰：完整越阶，可抗衡甚至反杀下一个大境界的中期强者；<br />
+                        - 跨越2个及以上大境界：极限越阶，必须依靠多重机缘叠加才能短暂实现。</li>
+                </ul>
+                <h4 style="color: var(--color-red-light);">2. 特殊场景判定</h4>
+                <ul>
+                    <li>残魂/夺舍/重伤状态：一律以角色全盛时期的基础战力判定其真实境界，当前状态战力仅代表其临时的实力；</li>
+                    <li>灵魂/肉身/装备严重越级：仅提升综合战力的数值溢出，不改变真实境界本身。哪怕灵魂达到了帝境，但只要斗气基础仍是斗尊，其真实境界依然是斗尊；</li>
+                    <li>斗帝特殊铁则判定：斗帝与斗圣存在无法逾越的规则级壁垒，无论斗圣综合战力跑分多高，都完全无法正面抗衡斗帝，极限也仅仅是短暂的抵挡。</li>
+                </ul>
+                <h4 style="color: var(--color-red-light);">3. 异常值（绝对禁止用来倒推境界的数值）</h4>
+                <ol>
+                    <li>持续时间＜30分钟的极尽拼命战力（包括且不限于：极限丹药加成、燃烧精血秘法、同归于尽性质的一次性大招如佛怒火莲）；</li>
+                    <li>他人强行灌注力量、借助高阶阵法或灵宝加持的外力干预战力；</li>
+                    <li>自爆肉身或灵魂引发的无差别同归于尽毁灭性破坏力；</li>
+                    <li>单纯依靠特殊召唤道具或远古老怪赐予卷轴爆发的虚假威能。</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="footer" style="text-align:center;padding:3rem 1rem;margin-top:4rem;border-top:1px solid rgba(220,180,110,0.2);font-size:0.9rem;color:rgba(255,255,255,0.5);display:flex;flex-direction:column;align-items:center;gap:0.8rem;width:100%;">
+        <h2 style="color:var(--color-gold);font-size:1.3rem;">《斗破苍穹》世界观百科</h2>
+        <p style="color:#fff;font-size:1rem;letter-spacing:2px;">三十年河东，三十年河西，莫欺少年穷</p>
+        <p><a href="index.html" style="color:var(--color-gold);">← 返回目录</a></p>
+    </div>
+    <button id="backToTop">↑</button>
+    <div class="clan-modal-overlay" id="clanModal"><div class="clan-modal-container"><span class="clan-modal-close" id="clanModalClose">&times;</span><div class="clan-modal-content" id="clanModalBody"></div></div></div>
+    <script src="js/app.js"></script>
+</body>
+</html>
